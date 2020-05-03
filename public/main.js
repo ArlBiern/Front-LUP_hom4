@@ -1,7 +1,7 @@
-import { handleCSSAnimation } from "../cssAnimation.js"
-import { handleCanvasAnimation } from "../canvasAnimation.js"
-import { handleThreeAnimation } from "../threeAnimation.js"
-import { SLIDES_COUNT } from "../utils.js"
+import { handleCSSAnimation } from "./cssAnimation.js"
+import { handleCanvasAnimation } from "./canvasAnimation.js"
+import { handleThreeAnimation } from "./threeAnimation.js"
+import { SLIDES_COUNT } from "./utils.js"
 
 const title = document.getElementById('title')
 
@@ -20,5 +20,21 @@ export const nextSlide = () => {
 
   handleCSSAnimation()
   handleCanvasAnimation(slideIndex)
-  handleThreeAnimation()
+  handleThreeAnimation(360)
+}
+
+export const prevSlide = () => {
+  if(slideIndex === 0){
+    slideIndex = SLIDES_COUNT
+  } else {
+    slideIndex--
+  }
+
+  title.innerHTML = ''
+  const text = document.createTextNode(`slide${slideIndex+1}`)
+  title.appendChild(text)
+
+  handleCSSAnimation()
+  handleCanvasAnimation(slideIndex)
+  handleThreeAnimation(-360)
 }
