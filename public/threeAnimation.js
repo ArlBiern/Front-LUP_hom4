@@ -1,5 +1,5 @@
-import {visibleHeightAtZDepth, visibleWidthAtZDepth, lerp} from "../utils.js"
-import {nextSlide, prevSlide} from "../main.js"
+import {visibleHeightAtZDepth, visibleWidthAtZDepth, lerp} from "./utils.js"
+import {nextSlide, prevSlide} from "./main.js"
 
 const raycaster = new THREE.Raycaster()
 const objLoader = new THREE.OBJLoader()
@@ -15,7 +15,7 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.append(renderer.domElement)
 
 objLoader.load(
-    'models/cube.obj',
+    'public/models/cube.obj',
     ({children}) => {
       const screenBorderRight = visibleWidthAtZDepth(-10, camera) / 2
       const screenBottom = -visibleHeightAtZDepth(-10, camera) / 2
@@ -77,6 +77,5 @@ window.addEventListener('click', () => {
   raycaster.setFromCamera(mousePosition, camera)
 
   const interesctedObjects = raycaster.intersectObjects(scene.children)
-  console.log(interesctedObjects)
   interesctedObjects.length && interesctedObjects[0].object.callbackFn()
 })

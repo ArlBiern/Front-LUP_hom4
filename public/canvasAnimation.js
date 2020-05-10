@@ -1,4 +1,4 @@
-import { SLIDES_COUNT, lerp, getRndInteger } from "../utils.js";
+import { SLIDES_COUNT, lerp, getRndInteger } from "./utils.js";
 
 const colorArray = [
   [171, 4, 242],
